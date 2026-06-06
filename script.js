@@ -127,9 +127,8 @@ class NeoAI {
         this.showTyping();
         
         try {
-            // ✅ WORKER API URL - CHANGE THIS TO YOUR WORKER URL
-            const response = await fetch('https://orange-lab-bd4f.prince6onyii.workers.dev/api/chat', {
-
+            // ✅ FIXED: Using relative URL - works on Render, GitHub Pages, localhost, etc.
+            const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ message: userText })
@@ -276,3 +275,4 @@ class NeoAI {
 }
 
 document.addEventListener('DOMContentLoaded', () => new NeoAI());
+        
