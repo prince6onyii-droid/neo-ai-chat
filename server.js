@@ -17,11 +17,16 @@ app.post('/api/chat', async (req, res) => {
             return res.status(400).json({ error: "Message required" });
         }
 
+        const apiKey = process.env.OPENAI_API_KEY;
+        if (!apiKey) {
+            return res.status(500).json({ error: "OpenAI API key not configured" });
+        }
+
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+                'Authorization': 'Bearer ' + apiKey
             },
             body: JSON.stringify({
                 model: 'gpt-4o-mini',
@@ -43,11 +48,12 @@ app.post('/api/chat', async (req, res) => {
         res.json({ reply: data.choices[0].message.content });
 
     } catch (error) {
+        console.error('Error:', error);
         res.status(500).json({ error: error.message });
     }
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log('Server running on port ' + PORT);
 });
