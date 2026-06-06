@@ -22,6 +22,9 @@ app.post('/api/chat', async (req, res) => {
             return res.status(500).json({ error: "OpenAI API key not configured" });
         }
 
+        // Use node-fetch for compatibility
+        const fetch = require('node-fetch');
+
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
             method: 'POST',
             headers: {
