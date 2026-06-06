@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo AI - Future of Conversation</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Welcome Screen -->
+    <div id="welcome-screen" class="welcome-screen">
+        <div class="welcome-content">
+            <div class="logo-glow">
+                <div class="logo">Neo AI</div>
+            </div>
+            <h1>Welcome to the Future</h1>
+            <p>Your intelligent companion powered by advanced AI</p>
+            <button id="start-btn" class="start-btn">Start Chatting</button>
+        </div>
+    </div>
+
+    <!-- Main Chat App -->
+    <div id="app" class="app hidden">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="ai-info">
+                <div class="ai-avatar">
+                    <div class="avatar-glow"></div>
+                    <span>Neo</span>
+                </div>
+                <div class="ai-status">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Online</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="theme-toggle" class="icon-btn" title="Toggle Theme">🌙</button>
+                <button id="clear-chat" class="icon-btn" title="Clear Chat">🗑️</button>
+            </div>
+        </header>
+
+        <!-- Chat Area -->
+        <main id="chat-area" class="chat-area">
+            <div id="messages" class="messages">
+                <div class="message ai-message welcome-msg">
+                    <div class="message-bubble">
+                        <p>Hello! I'm Neo AI. How can I help you today?</p>
+                    </div>
+                    <span class="message-time">Now</span>
+                </div>
+            </div>
+            
+            <!-- Typing Indicator -->
+            <div id="typing-indicator" class="typing-indicator hidden">
+                <div class="typing-bubble">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <span class="typing-text">Neo is thinking...</span>
+            </div>
+        </main>
+
+        <!-- Input Area -->
+        <footer class="input-area">
+            <div class="input-container">
+                <button id="mic-btn" class="mic-btn" title="Voice Input">🎤</button>
+                <div class="input-wrapper">
+                    <textarea 
+                        id="user-input" 
+                        placeholder="Type your message..." 
+                        rows="1"
+                        maxlength="4000"
+                    ></textarea>
+                </div>
+                <button id="send-btn" class="send-btn" title="Send Message">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-footer">
+                <span class="char-count">0/4000</span>
+                <button id="speak-toggle" class="speak-btn" title="AI Voice Reply">🔊 Voice: Off</button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Voice Listening Overlay -->
+    <div id="voice-overlay" class="voice-overlay hidden">
+        <div class="voice-wave">
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p>Listening...</p>
+        <button id="stop-mic" class="stop-mic-btn">Stop</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
